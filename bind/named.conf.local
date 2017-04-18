@@ -6,6 +6,10 @@ zone "home" { type master; file "/etc/bind/zones/db.home"; };
 
 zone "1.168.192.in-addr.arpa" { type master; file "/etc/bind/zones/db.192"; };
 
+# save from the ad-blocking
+zone "login.microsoftonline.com" { type forward; forward only; forwarders { 194.168.4.100; 194.168.8.100;}; };
+zone "outlook.live.com" { type forward; forward only; forwarders { 194.168.4.100; 194.168.8.100;}; };
+
 # Ad-blocking
 zone "___id___.c.mystat-in.net" { type master; file "/etc/bind/zones/dummy-block"; };
 zone "0.r.msn.com" { type master; file "/etc/bind/zones/dummy-block"; };
