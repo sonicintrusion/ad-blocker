@@ -1,0 +1,26 @@
+acl goodclients {
+	localhost;
+	localnets;
+};
+
+options {
+	directory "/var/cache/bind";
+
+	recursion yes;
+	allow-query { goodclients; };
+
+	forwarders {
+		194.168.4.100;
+		194.168.8.100;
+		8.8.8.8;
+		8.8.4.4;
+	//	192.168.1.1;
+	 };
+	forward only;
+
+	dnssec-enable no;
+	dnssec-validation no;
+
+	auth-nxdomain no;    # conform to RFC1035
+	listen-on-v6 { any; };
+};
